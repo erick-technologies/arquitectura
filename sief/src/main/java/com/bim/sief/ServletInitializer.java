@@ -1,5 +1,6 @@
-package com.bim.sief.configs;
+package com.bim.sief;
 
+import com.bim.sief.SiefApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
