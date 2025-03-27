@@ -2,7 +2,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpEvent, HttpRequest, HttpParams } from '@angular/common/http';
 import { BaseOperation } from './baseOperation';
-import { environment } from '../environment';
+import { environment } from '../../environment';
 
 export abstract class BaseService<T, ID> implements BaseOperation<T, ID> {
 
