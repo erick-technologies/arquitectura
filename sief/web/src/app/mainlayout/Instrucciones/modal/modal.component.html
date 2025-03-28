@@ -1,0 +1,14 @@
+<div class="modal-backdrop" *ngIf="mostrarModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>{{ titulo }}</h3>
+        <button class="close-btn" (click)="cerrarModal()">✖</button>
+      </div>
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
+      <div class="modal-footer" *ngIf="mostrarFooter">
+        <button *ngFor="let boton of botones" (click)="boton.accion()">{{ boton.texto }}</button>
+      </div>
+    </div>
+  </div>

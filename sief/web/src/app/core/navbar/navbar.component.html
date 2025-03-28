@@ -1,0 +1,14 @@
+<div class="top-bar">
+  <div class="logo">BIM</div>
+  <div class="session-control">
+      <span>Usuario cliente</span>
+      <button class="logout-button">Salir</button>
+  </div>
+</div>
+
+<nav class="navbar">
+  <button (click)="navigateTo('/bim/alta')" [class.active]="activeRoute.startsWith('/bim/alta')" data-route="/bim/alta">Nueva instrucción</button>
+  <button (click)="navigateTo('/bim/inicio')" [class.active]="activeRoute.startsWith('/bim/inicio')" data-route="/bim/inicio">Historiales</button>
+  <button (click)="navigateTo('/bim/descarga')" [class.active]="activeRoute.startsWith('/bim/descarga')" data-route="/bim/descarga">Descarga de formatos</button>
+  <div class="active-indicator"></div>
+</nav>

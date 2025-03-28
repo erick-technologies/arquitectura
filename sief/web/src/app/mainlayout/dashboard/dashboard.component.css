@@ -1,0 +1,119 @@
+.usuarios-container {
+  font-family: sans-serif;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tabs-container {
+  display: flex;
+  justify-content: center;
+}
+
+.tabs {
+  display: flex;
+  position: relative;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.tab.active {
+  color: #008080;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100px;
+  height: 4px;
+  background-color: green;
+  transition: left 0.3s ease, width 0.3s ease;
+}
+
+.content {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.add-user-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-user-button::before {
+  content: '+';
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+.config-icon {
+  cursor: pointer;
+  color: #888;
+  margin-left: 10px;
+}
+
+/* Nuevos estilos para la paginación y el footer */
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+}
+
+.pagination button, .pagination span {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}

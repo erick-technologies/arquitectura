@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="header">
+      <h2>¡Buenos días!</h2>
+  </div>
+
+  <div class="content">
+      <div class="fideicomisos">
+          <h3>Fideicomisos</h3>
+          <label for="numeroFideicomiso">Número de fideicomiso:</label>
+          <input type="text" id="numeroFideicomiso" [(ngModel)]="numeroFideicomiso" />
+
+          <label for="nombreFideicomiso">Nombre del fideicomiso:</label>
+          <input type="text" id="nombreFideicomiso" [(ngModel)]="nombreFideicomiso" />
+      </div>
+
+      <div class="nueva-instruccion">
+          <h3>Nueva Instrucción</h3>
+          <p>Selecciona una opción:</p>
+          <div class="tipo-seleccion">
+              <label>
+                  <input type="radio" name="tipo" value="monetaria" checked />
+                  Monetaria
+              </label>
+              <label>
+                  <input type="radio" name="tipo" value="noMonetaria" />
+                  No Monetaria
+              </label>
+          </div>
+
+          <div class="fideicomiso-alias">
+              <div>
+                  <label for="numeroFideicomisoNuevo">Número de fideicomiso:</label>
+                  <input type="text" id="numeroFideicomisoNuevo" [(ngModel)]="numeroFideicomiso" />
+              </div>
+
+              <div>
+                  <label for="aliasFideicomiso">Alias (nombre del fideicomiso):</label>
+                  <input type="text" id="aliasFideicomiso" [(ngModel)]="aliasFideicomiso" />
+              </div>
+          </div>
+
+          <label for="tipoInstruccion">Tipo de instrucción:</label>
+          <select id="tipoInstruccion" [(ngModel)]="tipoInstruccion">
+              <option value="otraOpcion">Opciones...</option>
+          </select>
+
+          <label for="comentario">Ingresa un comentario:</label>
+          <textarea id="comentario" [(ngModel)]="comentario"></textarea>
+
+          <div class="file-selection" *ngIf="fileName">
+              <span>Archivo seleccionado: {{ fileName }}</span>
+              <button (click)="eliminarArchivo()" class="eliminar-archivo">Eliminar</button>
+          </div>
+
+          <button id="cargarDocumentoBtn" (click)="abrirModalCarga()">Cargar Documento</button>
+
+          <div class="botones">
+              <button (click)="cargarInstruccion()">CARGAR INSTRUCCIÓN</button>
+              <button (click)="cancelar()">CANCELAR</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<app-modal [mostrarModal]="mostrarModal" titulo="Ingresa código de autenticación" (cerrar)="cerrarModal()">
+  <p>
+      Para cargar tu instrucción, ingresa el código de autenticación que enviamos a tu correo
+      electrónico.
+  </p>
+  <input type="text" placeholder="Ingresa tu código" [(ngModel)]="codigo" />
+  <div class="modal-botones">
+      <button (click)="validarCodigo()" class="btn-cargar">CARGAR INSTRUCCIÓN</button>
+      <a (click)="enviarNuevoCodigo()" class="enviar-nuevo">Enviar nuevo código</a>
+  </div>
+</app-modal>
+
+<app-modal [mostrarModal]="modalExitoso" titulo="Información enviada exitosamente" (cerrar)="cerrarModal()">
+  <div class="modal-exito">
+      <p>La instrucción se ha realizado correctamente.</p>
+      <button (click)="cerrarModal()">VER INSTRUCCIÓN</button>
+  </div>
+</app-modal>
+
+<app-modal [mostrarModal]="mostrarModalCarga" titulo="Carga de Documento" (cerrar)="cerrarModalCarga()">
+  <div class="modal-body">
+      <p>Por favor, ingresa el documento correspondiente</p>
+      <div class="drop-area" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+          <p>Arrastra y suelta el archivo aquí o</p>
+          <button (click)="fileInput.click()">Buscar archivo</button>
+          <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)" accept=".pdf" />
+      </div>
+      <p>Solo archivos PDF menores a 2 MB.</p>
+      <p *ngIf="fileSizeError" style="color: red;">El archivo excede el tamaño máximo permitido (2MB).</p>
+      <p *ngIf="fileTypeError" style="color: red;">El archivo no es un PDF.</p>
+  </div>
+  <div class="modal-footer">
+      <button (click)="cargarDocumento()" class="btn-cargar" [disabled]="!selectedFile || fileSizeError || fileTypeError">CARGAR DOCUMENTO</button>
+  </div>
+</app-modal>
